@@ -23,7 +23,7 @@ function numberMultipleOfBothThreeAndFive(number) {
       if(number < 5 ) return false;
   return numberMultipleOfFive(number) && numberMultipleOfThree(number)
 }
-function fizzBuzz(n) {
+function fizzBuzz1(n) {
   for(let i = 1; i <= n; i++) {
     if(numberMultipleOfThree(i) && !numberMultipleOfBothThreeAndFive(i)) {
       console.log("fizz");
@@ -41,4 +41,20 @@ function fizzBuzz(n) {
     }
 }
 
+function fizzBuzz(n) {
+	for (let i = 1; i <= n; i++) {
+		//if number is multiple of 3 & 5
+		if (i % 3 === 0 && i % 5 === 0) {
+			console.log("fizzbuzz");
+		} else if (i % 3 === 0) {
+			//if number is multiple of 3 only
+			console.log("fizz");
+		} else if (i % 5 === 0) {
+			//if number is multiple of  only
+			console.log("buzz");
+		} else {
+			console.log(i);
+		}
+	}
+}
 module.exports = fizzBuzz;
