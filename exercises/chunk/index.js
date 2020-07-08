@@ -10,15 +10,15 @@
 
 //my first solution
 function chunk(array, size) {
-	const subArrays = [];
+	const chunkedArray = [];
 	const numbersOfIterations = Math.ceil(array.length / size);
 	let sliceIndex = 0;
 	for (let i = 0; i < numbersOfIterations; i++) {
-		const subArray = array.slice(sliceIndex, sliceIndex + size);
-		subArrays.push(subArray);
+		const chunk = array.slice(sliceIndex, sliceIndex + size);
+		chunkedArray.push(chunk);
 		sliceIndex = sliceIndex + size;
 	}
-	return subArrays;
+	return chunkedArray;
 }
 
 module.exports = chunk;
