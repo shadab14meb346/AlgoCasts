@@ -16,7 +16,19 @@
 //       '##  '
 //       '### '
 //       '####'
-
-function steps(n) {}
+const noOfChars = (n, char) => {
+	let result = '';
+	for (let i = 0; i < n; i++) {
+		result += char;
+	}
+	return result;
+};
+function steps(n) {
+	const space = ' ';
+	const hash = '#';
+	for (let i = 1; i <= n; i++) {
+		console.log(noOfChars(i, hash) + noOfChars(n - i, space));
+	}
+}
 
 module.exports = steps;
