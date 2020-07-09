@@ -8,11 +8,40 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 //my first solution
-function anagrams(stringA, stringB) {
+function anagrams1(stringA, stringB) {
 	const filterString = (string) => {
 		return string.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 	};
 	return filterString(stringA) === filterString(stringB);
 }
-
+function freqMap(string) {
+	const freq = {};
+	for (const char of string) {
+		freq[char] = freq[char] + 1 || 1;
+	}
+	return freq;
+}
+function filterSpecialCharacters(string) {
+	return string.replace(/[^\w]/g, '');
+}
+function anagrams(stringA, stringB) {
+	const stringACharFreqMap = freqMap(
+		filterSpecialCharacters(stringA).toLowerCase()
+	);
+	const stringBCharFreqMap = freqMap(
+		filterSpecialCharacters(stringB).toLowerCase()
+	);
+	if (
+		Object.keys(stringACharFreqMap).length !==
+		Object.keys(stringBCharFreqMap).length
+	) {
+		return false;
+	}
+	for (const [char, freq] of Object.entries(stringACharFreqMap)) {
+		if (stringBCharFreqMap[char] !== freq) {
+			return false;
+		}
+	}
+	return true;
+}
 module.exports = anagrams;
