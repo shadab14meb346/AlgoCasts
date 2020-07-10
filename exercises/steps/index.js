@@ -23,12 +23,32 @@ const noOfChars = (n, char) => {
 	}
 	return result;
 };
-function steps(n) {
+function steps1(n) {
 	const space = ' ';
 	const hash = '#';
 	for (let i = 1; i <= n; i++) {
 		console.log(noOfChars(i, hash) + noOfChars(n - i, space));
 	}
 }
-
+function steps2(n) {
+	const emptyArray = new Array(n);
+	const equalizedArray = emptyArray.fill(' ');
+	for (let i = 0; i < n; i++) {
+		equalizedArray[i] = '#';
+		console.log(equalizedArray.join(''));
+	}
+}
+//recursion solution
+function steps(n, row = 0, stair = '') {
+	if (row === n) {
+		return;
+	}
+	if (n === stair.length) {
+		console.log(stair);
+		steps(n, row + 1);
+		return;
+	}
+	const add = stair.length <= row ? '#' : ' ';
+	steps(n, row, stair + add);
+}
 module.exports = steps;
